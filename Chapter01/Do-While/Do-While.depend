@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1510204710 source:/media/wisnu/FUN/packt-dsa-cpp/source_code/ch01_sc/Do-While/main.cpp
+	<iostream>
+	<cstdlib>
+	<ctime>
+
