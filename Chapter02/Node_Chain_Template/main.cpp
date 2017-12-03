@@ -1,4 +1,5 @@
-// Node_Chain_Template.cbp
+// Project: Node_Chain_Template.cbp
+// File   : main.cpp
 #include <iostream>
 
 using namespace std;
