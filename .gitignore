@@ -10,3 +10,6 @@ bin/
 obj/
 
 # End of https://www.gitignore.io/api/codeblocks
+
+### temporary folder
+temp/
