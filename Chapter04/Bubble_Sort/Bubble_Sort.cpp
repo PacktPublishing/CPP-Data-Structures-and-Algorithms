@@ -5,21 +5,41 @@
 
 using namespace std;
 
-void Swap(int *leftPtr, int *rightPtr)
+void Swap(int *firstPtr, int *secondPtr)
 {
-    int temp = *leftPtr;
-    *leftPtr = *rightPtr;
-    *rightPtr = temp;
+    // Save the first value
+    // to temporary variable
+    int temp = *firstPtr;
+
+    // Store the second value
+    // to first storage
+    *firstPtr = *secondPtr;
+
+    // Store the first value
+    // that has been saved in the temp variable
+    // to second storage
+    *secondPtr = temp;
 }
 
-void BubbleSort(int arr[], int n)
+void DisplayElements(
+    int arr[],
+    int arrSize)
+{
+    // Iterate all array's element
+    // then print it to screen
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+void BubbleSort(int arr[], int arrSize)
 {
     // Flag for swapping element
     bool isSwapped;
 
     // The value will be decreased
     // every time one element has been sorted
-    int unsortedElements = n;
+    int unsortedElements = arrSize;
     do
     {
         // If there's at least two element are swapped
@@ -45,19 +65,10 @@ void BubbleSort(int arr[], int n)
     while(isSwapped);
 }
 
-void DisplayElements(
-    int arr[],
-    int arrSize)
-{
-    // Iterate all array's element
-    // then print it to screen
-    for (int i=0; i < arrSize; ++i)
-        cout << arr[i] << " ";
-    cout << endl;
-}
-
 int main()
 {
+    cout << "Bubble Sort" << endl;
+
     // Initialize a new array
     int arr[] = {43, 21, 56, 78, 97, 30};
     int arrSize = sizeof(arr)/sizeof(*arr);
