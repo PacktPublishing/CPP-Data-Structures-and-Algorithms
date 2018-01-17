@@ -5,22 +5,6 @@
 
 using namespace std;
 
-void Swap(int *firstPtr, int *secondPtr)
-{
-    // Save the first value
-    // to temporary variable
-    int temp = *firstPtr;
-
-    // Store the second value
-    // to first storage
-    *firstPtr = *secondPtr;
-
-    // Store the first value
-    // that has been saved in the temp variable
-    // to second storage
-    *secondPtr = temp;
-}
-
 void DisplayElements(
     int arr[],
     int arrSize)
@@ -57,7 +41,7 @@ void SelectionSort(int arr[], int arrSize)
 
         // Swap the the first unsorted element
         // with the minimum value
-        Swap(&arr[i], &arr[minIndex]);
+        swap(arr[i], arr[minIndex]);
     }
 }
 

@@ -5,22 +5,6 @@
 
 using namespace std;
 
-void Swap(int *firstPtr, int *secondPtr)
-{
-    // Save the first value
-    // to temporary variable
-    int temp = *firstPtr;
-
-    // Store the second value
-    // to first storage
-    *firstPtr = *secondPtr;
-
-    // Store the first value
-    // that has been saved in the temp variable
-    // to second storage
-    *secondPtr = temp;
-}
-
 void DisplayElements(
     int arr[],
     int arrSize)
@@ -51,7 +35,7 @@ void BubbleSort(int arr[], int arrSize)
         {
             if (arr[i] > arr[i+1])
             {
-                Swap(&arr[i], &arr[i+1]);
+                swap(arr[i], arr[i+1]);
                 isSwapped = true;
             }
         }
@@ -70,7 +54,7 @@ int main()
     cout << "Bubble Sort" << endl;
 
     // Initialize a new array
-    int arr[] = {43, 21, 56, 78, 97, 30};
+    int arr[] = {43, 21, 26, 38, 17, 30};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Display the initial array
