@@ -5,33 +5,6 @@
 
 using namespace std;
 
-void Swap(int *firstPtr, int *secondPtr)
-{
-    // Save the first value
-    // to temporary variable
-    int temp = *firstPtr;
-
-    // Store the second value
-    // to first storage
-    *firstPtr = *secondPtr;
-
-    // Store the first value
-    // that has been saved in the temp variable
-    // to second storage
-    *secondPtr = temp;
-}
-
-void DisplayElements(
-    int arr[],
-    int arrSize)
-{
-    // Iterate all array's element
-    // then print it to screen
-    for (int i=0; i < arrSize; ++i)
-        cout << arr[i] << " ";
-    cout << endl;
-}
-
 void InsertionSort(int arr[], int arrSize)
 {
     // Iterate to all array's element
@@ -72,19 +45,23 @@ int main()
     cout << "Insertion Sort" << endl;
 
     // Initialize a new array
-    int arr[] = {43, 21, 56, 78, 97, 30};
+    int arr[] = {43, 21, 26, 38, 17, 30};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Display the initial array
     cout << "Initial array: ";
-    DisplayElements(arr, arrSize);
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     // Sort the array with InsertionSort algorithm
     InsertionSort(arr, arrSize);
 
     // Display the sorted array
     cout << "Sorted array : ";
-    DisplayElements(arr, arrSize);
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     return 0;
 }

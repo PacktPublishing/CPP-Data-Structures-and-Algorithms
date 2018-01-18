@@ -5,19 +5,6 @@
 
 using namespace std;
 
-void DisplayElements(
-    int arr[],
-    int arrSize)
-{
-    // Iterate all array's element
-    // then print it to screen
-    for (int i=0; i < arrSize; ++i)
-        cout << arr[i] << " ";
-    cout << endl;
-
-    return;
-}
-
 void Merge(
     int arr[],
     int startIndex,
@@ -139,19 +126,23 @@ int main()
     cout << "Merge Sort" << endl;
 
     // Initialize a new array
-    int arr[] = {43, 21, 56, 78, 97, 30, 31, 52};
+    int arr[] = {7, 1, 5, 9, 3, 6, 8, 2};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Display the initial array
     cout << "Initial array: ";
-    DisplayElements(arr, arrSize);
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     // Sort the array with MergeSort algorithm
     MergeSort(arr, 0, arrSize - 1);
 
     // Display the sorted array
     cout << "Sorted array : ";
-    DisplayElements(arr, arrSize);
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     return 0;
 }

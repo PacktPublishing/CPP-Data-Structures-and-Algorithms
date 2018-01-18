@@ -5,17 +5,6 @@
 
 using namespace std;
 
-void DisplayElements(
-    int arr[],
-    int arrSize)
-{
-    // Iterate all array's element
-    // then print it to screen
-    for (int i = 0; i < arrSize; ++i)
-        cout << arr[i] << " ";
-    cout << endl;
-}
-
 void SelectionSort(int arr[], int arrSize)
 {
     // variable to store the index of the minimum value
@@ -55,14 +44,18 @@ int main()
 
     // Display the initial array
     cout << "Initial array: ";
-    DisplayElements(arr, arrSize);
+    for (int i = 0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     // Sort the array with SelectionSort algorithm
     SelectionSort(arr, arrSize);
 
     // Display the sorted array
     cout << "Sorted array : ";
-    DisplayElements(arr, arrSize);
+    for (int i = 0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     return 0;
 }
