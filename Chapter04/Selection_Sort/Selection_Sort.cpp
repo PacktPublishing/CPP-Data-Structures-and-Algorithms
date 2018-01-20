@@ -39,7 +39,7 @@ int main()
     cout << "Selection Sort" << endl;
 
     // Initialize a new array
-    int arr[] = {43, 21, 56, 78, 97, 30};
+    int arr[] = {43, 21, 26, 38, 17, 30};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Display the initial array

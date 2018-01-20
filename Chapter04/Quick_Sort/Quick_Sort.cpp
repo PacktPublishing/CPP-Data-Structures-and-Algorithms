@@ -5,73 +5,52 @@
 
 using namespace std;
 
-void Swap(int *firstPtr, int *secondPtr)
-{
-    // Save the first value
-    // to temporary variable
-    int temp = *firstPtr;
-
-    // Store the second value
-    // to first storage
-    *firstPtr = *secondPtr;
-
-    // Store the first value
-    // that has been saved in the temp variable
-    // to second storage
-    *secondPtr = temp;
-}
-
-void DisplayElements(
+int Partition(
     int arr[],
-    int arrSize)
+    int startIndex,
+    int endIndex)
 {
-    // Iterate all array's element
-    // then print it to screen
-    for (int i=0; i < arrSize; ++i)
-        cout << arr[i] << " ";
-    cout << endl;
-}
+    // Set the first item as pivot
+    int pivot = arr[startIndex];
 
-int partition(
-    int arr[],
-    int i,
-    int j)
-{
-    // p is the pivot
-    int p = arr[i];
+    // LeftSublist and RightSublist
+    // are initially empty
+    int middleIndex = startIndex;
 
-    // S1 and S2 are initially empty
-    int m = i;
-
-    for (int k = i+1; k <= j; ++k)
+    // Iterate through arr[1 ... n-1]
+    for (int i = startIndex + 1; i <= endIndex; ++i)
     {
         // explore the unknown region
-        if (arr[k] < p)
+        if (arr[i] < pivot)
         {
-            // case 2
-            m++;
-            Swap(&arr[k], &arr[m]);
-        } // notice that we do nothing in case 1: a[k] >= p
+            ++middleIndex;
+            swap(arr[i], arr[middleIndex]);
+        }
     }
 
-    // final step, swap pivot with a[m]
-    Swap(&arr[i], &arr[m]);
+    // Final step, swap pivot with a[m]
+    swap(arr[startIndex], arr[middleIndex]);
 
     // return the index of pivot, to be used by Quick Sort
-    return m;
+    return middleIndex;
 }
 
-void quickSort(int arr[], int low, int high)
+void QuickSort(
+    int arr[],
+    int startIndex,
+    int endIndex)
 {
-    if (low < high)
+    // Only perform sort process
+    // if the end index is higher than start index
+    if (startIndex < endIndex)
     {
-        int pivotIdx = partition(arr, low, high); // O(N)
+        int pivotIndex = Partition(arr, startIndex, endIndex);
 
-        // arr[low..high] ~> arr[low..pivotIdx–1], pivot, a[pivotIdx+1..high]
-        quickSort(arr, low, pivotIdx-1); // recursively sort left subarray
+        // arr[startIndex..endIndex] ~> arr[startIndex..pivotIndex–1], pivot, a[pivotIndex+1..endIndex]
+        QuickSort(arr, startIndex, pivotIndex-1); // recursively sort left subarray
 
-        // arr[pivotIdx] = pivot is already sorted after partition
-        quickSort(arr, pivotIdx+1, high); // then sort right subarray
+        // arr[pivotIndex] = pivot is already sorted after partition
+        QuickSort(arr, pivotIndex+1, endIndex); // then sort right subarray
     }
 }
 
@@ -80,20 +59,26 @@ int main()
     cout << "Quick Sort" << endl;
 
     // Initialize a new array
-    int arr[] = {43, 21, 56, 78, 97, 30, 44, 61, 72, 90, 39};
+    int arr[] = {27, 38, 12, 39, 27, 16};
+//    int arr[] = {43, 21, 26, 38, 17, 30};
+//    int arr[] = {43, 21, 56, 78, 97, 30, 44, 61, 72, 90, 39};
 //    int arr[] = {4, 0, 3, 5, 8, 7, 9, 6, 1, 10, 2, 11};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Display the initial array
     cout << "Initial array: ";
-    DisplayElements(arr, arrSize);
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     // Sort the array with QuickSort algorithm
-    quickSort(arr, 0, arrSize - 1);
+    QuickSort(arr, 0, arrSize - 1);
 
     // Display the sorted array
     cout << "Sorted array : ";
-    DisplayElements(arr, arrSize);
+    for (int i=0; i < arrSize; ++i)
+        cout << arr[i] << " ";
+    cout << endl;
 
     return 0;
 }
