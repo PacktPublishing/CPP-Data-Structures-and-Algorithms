@@ -13,25 +13,36 @@ int Partition(
     // Set the first item as pivot
     int pivot = arr[startIndex];
 
-    // LeftSublist and RightSublist
+    // Left sublist and right sublist
     // are initially empty
     int middleIndex = startIndex;
 
-    // Iterate through arr[1 ... n-1]
+    // Iterate through arr[1 ... n - 1]
     for (int i = startIndex + 1; i <= endIndex; ++i)
     {
-        // explore the unknown region
         if (arr[i] < pivot)
         {
+            // the current item is on the left sublist
+            // prepare a seat by shifting middle index
             ++middleIndex;
+
+            // the arr[middleIndex] is
+            // the member of right sublist,
+            // swap it to the current item which is
+            // member of left list
             swap(arr[i], arr[middleIndex]);
         }
     }
 
-    // Final step, swap pivot with a[m]
+    // By now, the arr[middleIndex] item is
+    // member of left sublist.
+    // We can swap it with the pivot
+    // so the pivot will be in the correct position
+    // which is between left sublist and right sublist
     swap(arr[startIndex], arr[middleIndex]);
 
-    // return the index of pivot, to be used by Quick Sort
+    // return the index of pivot
+    // to be used by next quick sort
     return middleIndex;
 }
 
@@ -44,13 +55,18 @@ void QuickSort(
     // if the end index is higher than start index
     if (startIndex < endIndex)
     {
+        // Retrieve pivot position from Partition() function
+        // This pivotIndex is the index of element that is already
+        // in correct position
         int pivotIndex = Partition(arr, startIndex, endIndex);
 
-        // arr[startIndex..endIndex] ~> arr[startIndex..pivotIndex–1], pivot, a[pivotIndex+1..endIndex]
-        QuickSort(arr, startIndex, pivotIndex-1); // recursively sort left subarray
+        // Sort left sublist
+        // arr[startIndex ... pivotIndex - 1]
+        QuickSort(arr, startIndex, pivotIndex - 1);
 
-        // arr[pivotIndex] = pivot is already sorted after partition
-        QuickSort(arr, pivotIndex+1, endIndex); // then sort right subarray
+        // Sort right sublist
+        // arr[pivotIndex + 1 ... endIndex]
+        QuickSort(arr, pivotIndex + 1, endIndex);
     }
 }
 
@@ -59,10 +75,7 @@ int main()
     cout << "Quick Sort" << endl;
 
     // Initialize a new array
-    int arr[] = {27, 38, 12, 39, 27, 16};
-//    int arr[] = {43, 21, 26, 38, 17, 30};
-//    int arr[] = {43, 21, 56, 78, 97, 30, 44, 61, 72, 90, 39};
-//    int arr[] = {4, 0, 3, 5, 8, 7, 9, 6, 1, 10, 2, 11};
+    int arr[] = {25, 21, 12, 40, 37, 43, 14, 28};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Display the initial array
