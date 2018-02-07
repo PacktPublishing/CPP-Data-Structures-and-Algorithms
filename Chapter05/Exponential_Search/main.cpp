@@ -1,5 +1,5 @@
-// Project: Binary_Search.cbp
-// File   : Binary_Search.cpp
+// Project: Exponential_Search.cbp
+// File   : Exponential_Search.cpp
 
 #include <iostream>
 
@@ -33,7 +33,7 @@ int BinarySearch(
             return BinarySearch(arr, startIndex, middleIndex - 1, val);
         }
         // If the middle index's value is lower than the searched value
-        // then perform another Binary Search to the left sub array
+        // then perform another Binary Search to the right sub array
         // arr[middleIndex + 1 ... endIndex]
         else
         {
@@ -45,19 +45,54 @@ int BinarySearch(
     return -1;
 }
 
+int ExponentialSearch(
+    int arr[],
+    int arrSize,
+    int val)
+{
+    // It's impossible to search value
+    // in array contains zero or less element
+    if (arrSize <= 0)
+    {
+        return -1;
+    }
+
+    // Start comparing from index 1
+    int blockIndex = 1;
+
+    // Increase the blockIndex exponentially
+    // if blockIndex is lower than array size
+    // and the value of element in blockIndex
+    // is still lower than searched value
+    while (blockIndex < arrSize && arr[blockIndex] < val)
+    {
+        blockIndex *= 2;
+    }
+
+    // After find the blockIndex,
+    // perfom Binary Search to the sub array
+    // defined by the blockIndex
+    // arr[blockIndex / 2 .... blockIndex or arrSize]
+    return BinarySearch(
+        arr,
+        blockIndex / 2,
+        min(blockIndex, arrSize),
+        val);
+}
+
 int main()
 {
-    cout << "Binary Search" << endl;
+    cout << "Exponential Search" << endl;
 
     // Initialize a new array
-    int arr[] = {3, 8, 11, 15, 16, 23, 28, 30, 32, 39, 42, 44, 47, 48, 50};
+    int arr[] = {8, 15, 23, 28, 32, 39, 42, 44, 47, 48};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
     // Define value to be searched
-    int searchedValue = 16;
+    int searchedValue = 39;
 
-    // Find the searched value using Binary Search
-    int i = BinarySearch(arr, 0, arrSize - 1, searchedValue);
+    // Find the searched value using blockIndex Search
+    int i = ExponentialSearch(arr, arrSize, searchedValue);
 
     // Notify user the result
     // if the return is not -1,

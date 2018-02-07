@@ -6,40 +6,6 @@
 
 using namespace std;
 
-//int JumpSearch(int arr[], int arrSize, int val)
-//{
-//    // Finding block size to be jumped
-//    int step = sqrt(arrSize);
-//
-//    // Finding the block where element is
-//    // present (if it is present)
-//    int prev = 0;
-//    while (arr[min(step, arrSize)-1] < val)
-//    {
-//        prev = step;
-//        step += sqrt(arrSize);
-//        if (prev >= arrSize)
-//            return -1;
-//    }
-//
-//    // Doing a linear search for x in block
-//    // beginning with prev.
-//    while (arr[prev] < val)
-//    {
-//        prev++;
-//
-//        // If we reached next block or end of
-//        // array, element is not present.
-//        if (prev == min(step, arrSize))
-//            return -1;
-//    }
-//    // If element is found
-//    if (arr[prev] == val)
-//        return prev;
-//
-//    return -1;
-//}
-
 int LinearSearch(
     int arr[],
     int startIndex,
@@ -61,37 +27,42 @@ int LinearSearch(
     return -1;
 }
 
-int JumpSearch(int arr[], int arrSize, int val)
+int JumpSearch(
+    int arr[],
+    int arrSize,
+    int val)
 {
+    // It's impossible to search value
+    // in array contains zero or less element
+    if (arrSize <= 0)
+    {
+        return -1;
+    }
+
     // Defining step used to jump the array
     int step = sqrt(arrSize);
 
-    int i;
-    for(i = 0; i < arrSize; i += step)
+    // Start comparing from index 0
+    int blockIndex = 0;
+
+    // Increase the blockIndex by the step
+    // if blockIndex is lower than array size
+    // and the value of element in blockIndex
+    // is still lower than searched value
+    while (blockIndex < arrSize && arr[blockIndex] < val)
     {
-        if(arr[i] > val)
-        {
-            if(i == 0)
-            {
-                return -1;
-            }
-            else
-            {
-//                i -= step;
-                break;
-            }
-        }
+        blockIndex += step;
     }
 
-
-                i -= step;
-
-//    if(i >= arrSize)
-//    {
-//        return -1;
-//    }
-
-    return LinearSearch(arr, i, i + step, val);
+    // After find the blockIndex,
+    // perfom Linear Search to the sub array
+    // defined by the blockIndex
+    // arr[blockIndex - step .... blockIndex or arrSize]
+    return LinearSearch(
+        arr,
+        blockIndex - step,
+        min(blockIndex, arrSize),
+        val);
 }
 
 int main()
@@ -99,11 +70,28 @@ int main()
     cout << "Jump Search" << endl;
 
     // Initialize a new array
-    int arr[] = {11, 17, 21, 22, 25, 26, 30, 38, 43, 49};
+    int arr[] = {8, 15, 23, 28, 32, 39, 42, 44, 47, 48};
     int arrSize = sizeof(arr)/sizeof(*arr);
 
-    int i = JumpSearch(arr, arrSize, 100);
-    cout << i << endl;
+    // Define value to be searched
+    int searchedValue = 39;
+
+    // Find the searched value using Jump Search
+    int i = JumpSearch(arr, arrSize, searchedValue);
+
+    // Notify user the result
+    // if the return is not -1,
+    // the searched value is found
+    if(i != -1)
+    {
+        cout << searchedValue << " is found in index ";
+        cout << i << endl;
+    }
+    else
+    {
+        cout << "Could not find value " << searchedValue;
+        cout << endl;
+    }
 
     return 0;
 }

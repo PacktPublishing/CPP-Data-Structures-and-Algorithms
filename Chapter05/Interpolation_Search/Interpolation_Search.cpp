@@ -1,23 +1,23 @@
-// Project: Binary_Search.cbp
-// File   : Binary_Search.cpp
+// Project: Interpolation_Search.cbp
+// File   : Interpolation_Search.cpp
 
 #include <iostream>
 
 using namespace std;
 
-int BinarySearch(
+int InterpolationSearch(
     int arr[],
-    int startIndex,
-    int endIndex,
+    int lowIndex,
+    int highIndex,
     int val)
 {
-    // Only perform searching process
-    // if the end index is higher than
-    // or equals to start index
-    if(startIndex <= endIndex)
+    if(lowIndex <= highIndex)
     {
         // Find middle index
-        int middleIndex = startIndex + (endIndex - startIndex) / 2;
+        int middleIndex =
+            lowIndex + (
+                (val - arr[lowIndex]) * (highIndex - lowIndex) /
+                (arr[highIndex] - arr[lowIndex]));
 
         // If the middle index's value is the searched value
         // then return the index
@@ -26,18 +26,18 @@ int BinarySearch(
             return middleIndex;
         }
         // If the middle index's value is greater than the searched value
-        // then perform another Binary Search to the left sub array
-        // arr[startIndex ... middleIndex - 1]
+        // then perform another Interpolation Search to the left sub array
+        // arr[lowIndex ... middleIndex - 1]
         else if(arr[middleIndex] > val)
         {
-            return BinarySearch(arr, startIndex, middleIndex - 1, val);
+            return InterpolationSearch(arr, lowIndex, middleIndex - 1, val);
         }
         // If the middle index's value is lower than the searched value
-        // then perform another Binary Search to the left sub array
-        // arr[middleIndex + 1 ... endIndex]
+        // then perform another Interpolation Search to the right sub array
+        // arr[middleIndex + 1 ... highIndex]
         else
         {
-            return BinarySearch(arr, middleIndex + 1, endIndex, val);
+            return InterpolationSearch(arr, middleIndex + 1, highIndex, val);
         }
     }
 
@@ -47,7 +47,7 @@ int BinarySearch(
 
 int main()
 {
-    cout << "Binary Search" << endl;
+    cout << "Interpolation Search" << endl;
 
     // Initialize a new array
     int arr[] = {3, 8, 11, 15, 16, 23, 28, 30, 32, 39, 42, 44, 47, 48, 50};
@@ -56,8 +56,8 @@ int main()
     // Define value to be searched
     int searchedValue = 16;
 
-    // Find the searched value using Binary Search
-    int i = BinarySearch(arr, 0, arrSize - 1, searchedValue);
+    // Find the searched value using Interpolation Search
+    int i = InterpolationSearch(arr, 0, arrSize - 1, searchedValue);
 
     // Notify user the result
     // if the return is not -1,
