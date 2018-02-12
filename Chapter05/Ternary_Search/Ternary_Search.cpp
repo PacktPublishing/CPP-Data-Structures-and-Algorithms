@@ -20,7 +20,8 @@ int TernarySearch(
         int middleLeftIndex = startIndex + (endIndex - startIndex) / 3;
 
         // Find index of area of the last third
-        int middleRightIndex = middleLeftIndex + (endIndex - startIndex) / 3;
+        int middleRightIndex =
+            middleLeftIndex + (endIndex - startIndex) / 3;
 
         // If val is at middleLeftIndex
         // then return middleLeftIndex
