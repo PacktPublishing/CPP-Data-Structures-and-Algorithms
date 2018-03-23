@@ -1,4 +1,4 @@
-// While.cbp
+// Do-While.cbp
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
