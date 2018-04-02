@@ -25,4 +25,6 @@ int main()
     for(int i = 0; i < sizeof(arr)/sizeof(*arr); ++i)
         cout << arr[i] << " ";
     cout << endl;
+    
+    return 0;
 }
