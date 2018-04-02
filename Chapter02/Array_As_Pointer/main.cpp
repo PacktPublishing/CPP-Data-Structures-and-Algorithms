@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    // Initialize tee array length
+    // Initialize the array length
     int arrLength = 5;
 
     // Initialize a pointer
