@@ -1,5 +1,5 @@
 // Project: Array_As_Pointer.cbp
-// File   : main.cpp
+// File   : Array_As_Pointer.cpp
 
 #include <iostream>
 
@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    // Initialize the array length
+    // Initialize tee array length
     int arrLength = 5;
 
     // Initialize a pointer
@@ -18,7 +18,7 @@ int main()
     // by incrementing the pointer (ptr++)
     cout << "Using pointer increment" << endl;
     cout << "Value\tAddress" << endl;
-    while(*ptr != NULL)
+    while(*ptr)
     {
         cout << *ptr << "\t";
         cout << ptr << endl;

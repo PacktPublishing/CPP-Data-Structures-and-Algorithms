@@ -26,7 +26,7 @@ Stack<T>::Stack() : m_count(0), m_top(NULL) {}
 template <typename T>
 bool Stack<T>::IsEmpty()
 {
-    // return TRUE if there's at least one item
+    // return TRUE if there are no items
     // otherwise, return FALSE
     return m_count <= 0;
 }

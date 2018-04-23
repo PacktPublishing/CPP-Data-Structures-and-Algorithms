@@ -87,8 +87,6 @@ bool SublistSearch(
     }
 
     // Check next element of the second list
-    int iii = firstList->Value;
-    int jjj = secondList->Value;
 	return SublistSearch(firstList, secondList->Next);
 }
 
