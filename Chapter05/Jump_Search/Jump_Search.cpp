@@ -55,7 +55,7 @@ int JumpSearch(
     }
 
     // After find the blockIndex,
-    // perfom Linear Search to the sub array
+    // perform Linear Search to the sub array
     // defined by the blockIndex
     // arr[blockIndex - step .... blockIndex or arrSize]
     return LinearSearch(
