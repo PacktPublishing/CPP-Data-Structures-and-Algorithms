@@ -26,9 +26,9 @@ The code will look like the following:
 
 To get through this book and successfully complete all the source code examples, you will
 need the following specifications:
-Desktop PC or Notebook with Windows, Linux, or macOS
-GNU GCC v5.4.0 or above
-Code::Block IDE v17.12 (for Windows and Linux OS) or Code::Block IDE v13.12
+*Desktop PC or Notebook with Windows, Linux, or macOS
+*GNU GCC v5.4.0 or above
+*Code::Block IDE v17.12 (for Windows and Linux OS) or Code::Block IDE v13.12
 (for macOS)
 
 ## Related Products
