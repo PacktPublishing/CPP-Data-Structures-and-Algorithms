@@ -18,7 +18,11 @@ int main()
     // by incrementing the pointer (ptr++)
     cout << "Using pointer increment" << endl;
     cout << "Value\tAddress" << endl;
-    while(*ptr)
+    // The use of while(*ptr) resulted in a list of more than 5 value when I run the code on VS and CodeBlock
+    // In window base system, suggested changes
+    int l = ptr[arrLength];
+    while(*ptr != l)
+    //while(*ptr)
     {
         cout << *ptr << "\t";
         cout << ptr << endl;
