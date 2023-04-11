@@ -30,19 +30,19 @@ int main()
     // +------+------+
     // |  7   | NULL |
     // +------+------+
-    Node * node1 = new Node;
+    Node * node1 = new Node();
     node1->Value = 7;
 
     // +------+------+
     // |  14  | NULL |
     // +------+------+
-    Node * node2 = new Node;
+    Node * node2 = new Node();
     node2->Value = 14;
 
     // +------+------+
     // |  21  | NULL |
     // +------+------+
-    Node * node3 = new Node;
+    Node * node3 = new Node();
     node3->Value = 21;
 
     // +------+------+  +------+------+  +------+------+
